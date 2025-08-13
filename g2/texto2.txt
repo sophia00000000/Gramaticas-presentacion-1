@@ -1,0 +1,12 @@
+b
+abb
+aabbb
+aaabbbb
+a
+ab
+aabb
+abbb
+b
+abb
+b
+7
