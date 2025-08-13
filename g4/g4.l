@@ -1,18 +1,23 @@
 %{
-#include "g4.tab.h"
 #include <stdio.h>
-int yyerror(const char *s);
+#include <string.h>
+
+int valid_input = 0;
 %}
 
 %%
-"a"         { return A_CHAR; }
-"b"         { return B_CHAR; }
-\n          { return EOL; }
-"//".*      { /* ignorar comentarios */ }
-[ \t\r\f]+  { /* ignorar espacios en blanco */ }
-.           { yyerror("Caracter desconocido"); return 0; }
+"abb"           { printf("acepta\n"); valid_input = 1; }
+"ab"            { printf("acepta\n"); valid_input = 1; }
+[a-zA-Z0-9]+    { printf("no acepta\n"); }
+.               { /* Ignorar caracteres que no matcheen */ }
+\n              { /* Ignorar saltos de línea */ }
 %%
 
 int yywrap() {
     return 1;
+}
+
+int main(int argc, char *argv[]) {
+    yylex();
+    return 0;
 }
