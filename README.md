@@ -27,3 +27,5 @@ Para cada una de las gramáticas hay un archivo de prueba .txt.
 ---
 
 <img width="1597" height="809" alt="image" src="https://github.com/user-attachments/assets/aba0fb68-0647-4e46-86f6-cb82c219490f" />
+<img width="734" height="267" alt="image" src="https://github.com/user-attachments/assets/8d4f803e-4df7-4d29-9458-6787fd722af9" />
+
