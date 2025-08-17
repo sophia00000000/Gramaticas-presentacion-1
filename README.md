@@ -32,12 +32,14 @@ Flex y Bison:
 
 Python:
 
+<img width="588" height="286" alt="image" src="https://github.com/user-attachments/assets/05b852f5-04c5-4500-a3c7-22fbe9d35c4d" />
+
+
 ---
 <img width="1593" height="812" alt="image" src="https://github.com/user-attachments/assets/b69fc0f8-658f-40a8-9082-d6164b614aea" />
 
 Flex y Bison:
 
-<img width="1140" height="237" alt="image" src="https://github.com/user-attachments/assets/35e6bb85-6617-45af-a156-07d2315359f6" />
 
 Python:
 
@@ -54,7 +56,6 @@ Flex y Bison:
 
 Python:
 
-<img width="588" height="286" alt="image" src="https://github.com/user-attachments/assets/05b852f5-04c5-4500-a3c7-22fbe9d35c4d" />
 
 
 ---
