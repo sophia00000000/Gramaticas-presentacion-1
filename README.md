@@ -56,6 +56,7 @@ Flex y Bison:
 
 Python:
 
+<img width="573" height="301" alt="image" src="https://github.com/user-attachments/assets/b72456a4-b70f-4ef2-9eb1-d864a044fc61" />
 
 
 ---
