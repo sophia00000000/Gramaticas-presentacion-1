@@ -1,8 +1,42 @@
 # Gram-ticas-presentaci-n-1
-
-Programa en Python y en C que procese las gramáticas: L(G1), L(G2), L(G3), L(G4), L(G5).
+Implementación gramáticas Presentación01.
 
 Para cada una de las gramáticas hay un archivo de prueba .txt. 
+
+
+---
+### Ejecución
+Flex
+
+
+        flex g2.l
+
+
+
+        
+compilar - se produce del anterior - banderas
+
+
+        cc lex.yy.c -lfl
+
+
+ejecutable
+
+
+
+        ./a.out < archivo.txt
+
+Flex y Bison 
+
+
+        bison -d g2.y      # genera g2.tab.c y g2.tab.h
+        flex g2.l          # genera lex.yy.c
+                cc g2.tab.c lex.yy.c -lfl -o g2
+        ./g2 artivo.txt
+
+---
+
+# Resultados
 
 <img width="1597" height="886" alt="image" src="https://github.com/user-attachments/assets/41b528f5-025d-4fca-aa5d-b7a804e35824" />
 
@@ -67,34 +101,6 @@ Python:
 
 
 ---
-### Ejecución
-Flex
-
-
-        flex g2.l
-
-
-
-        
-compilar - se produce del anterior - banderas
-
-
-        cc lex.yy.c -lfl
-
-
-ejecutable
-
-
-
-        ./a.out < archivo.txt
-
-Flex y Bison 
-
-
-        bison -d g2.y      # genera g2.tab.c y g2.tab.h
-        flex g2.l          # genera lex.yy.c
-                cc g2.tab.c lex.yy.c -lfl -o g2
-        ./g2 artivo.txt
 
 ### Referencias 
 - https://github.com/westes/flex 
