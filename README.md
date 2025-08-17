@@ -12,6 +12,8 @@ Flex y Bison:
 
 Python:
 
+<img width="504" height="336" alt="image" src="https://github.com/user-attachments/assets/b8579660-f291-489b-a76c-d5679fd6adcd" />
+
 
 ---
 <img width="1599" height="807" alt="image" src="https://github.com/user-attachments/assets/b34da2e2-4ce0-4ef2-b2af-8f001706fd93" />
@@ -42,6 +44,8 @@ Python:
 <img width="1593" height="812" alt="image" src="https://github.com/user-attachments/assets/b69fc0f8-658f-40a8-9082-d6164b614aea" />
 
 Flex y Bison:
+
+<img width="611" height="315" alt="image" src="https://github.com/user-attachments/assets/62d331be-72ff-417b-8f3d-5fe7040efa08" />
 
 
 Python:
@@ -89,7 +93,7 @@ Flex y Bison
 
         bison -d g2.y      # genera g2.tab.c y g2.tab.h
         flex g2.l          # genera lex.yy.c
-        cc g2.tab.c lex.yy.c -lfl -o g2
+                cc g2.tab.c lex.yy.c -lfl -o g2
         ./g2 artivo.txt
 
 ### Referencias 
