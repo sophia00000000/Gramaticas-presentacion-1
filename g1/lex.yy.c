@@ -444,10 +444,9 @@ char *yytext;
 #line 1 "capicuas.l"
 #line 2 "capicuas.l"
 #include "capicuas.tab.h"
-#include <stdio.h>
 int yyerror(const char *s);
+#line 449 "lex.yy.c"
 #line 450 "lex.yy.c"
-#line 451 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -664,9 +663,9 @@ YY_DECL
 		}
 
 	{
-#line 7 "capicuas.l"
+#line 6 "capicuas.l"
 
-#line 670 "lex.yy.c"
+#line 669 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -725,17 +724,21 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "capicuas.l"
+#line 7 "capicuas.l"
 { return CERO; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "capicuas.l"
+#line 8 "capicuas.l"
 { return UNO; }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
+#line 9 "capicuas.l"
+{ return EOL; }
+	YY_BREAK
+case YY_STATE_EOF(INITIAL):
 #line 10 "capicuas.l"
 { return EOL; }
 	YY_BREAK
@@ -752,16 +755,14 @@ YY_RULE_SETUP
 case 6:
 YY_RULE_SETUP
 #line 13 "capicuas.l"
-{ yyerror("Caracter desconocido"); return 0; }
+{ return DESCONOCIDO;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 14 "capicuas.l"
 ECHO;
 	YY_BREAK
-#line 763 "lex.yy.c"
-case YY_STATE_EOF(INITIAL):
-	yyterminate();
+#line 766 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{

@@ -739,29 +739,31 @@ YY_RULE_SETUP
 #line 10 "g3.l"
 { return EOL; }
 	YY_BREAK
+case YY_STATE_EOF(INITIAL):
+#line 11 "g3.l"
+{ return EOL; }
+	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "g3.l"
+#line 12 "g3.l"
 { /* ignorar comentarios */ }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 12 "g3.l"
+#line 13 "g3.l"
 { /* ignorar espacios en blanco */ }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 13 "g3.l"
-{ yyerror("Caracter desconocido"); return 0; }
+#line 14 "g3.l"
+{ return DESCONOCIDO; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 14 "g3.l"
+#line 15 "g3.l"
 ECHO;
 	YY_BREAK
-#line 763 "lex.yy.c"
-case YY_STATE_EOF(INITIAL):
-	yyterminate();
+#line 767 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1764,7 +1766,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 14 "g3.l"
+#line 15 "g3.l"
 
 
 int yywrap() {

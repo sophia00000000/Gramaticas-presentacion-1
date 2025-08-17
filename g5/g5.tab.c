@@ -67,31 +67,15 @@
 
 
 /* First part of user prologue.  */
-#line 1 "capicuas.y"
+#line 1 "g5.y"
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
 int yylex(void);
 int yyerror(const char *s);
 extern FILE *yyin;
 
-char buffer[1000];  /* Para almacenar la cadena leída */
-int pos = 0;        /* Índice en el buffer */
-
-/* Función que evalúa si una cadena es capicúa */
-int es_capicua(char *str) {
-    int len = strlen(str);
-    for (int i = 0; i < len/2; i++) {
-        if (str[i] != str[len - 1 - i]) {
-            return 0; /* No es capicúa */
-        }
-    }
-    return 1; /* Sí es capicúa */
-}
-
-#line 95 "capicuas.tab.c"
+#line 79 "g5.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -114,7 +98,7 @@ int es_capicua(char *str) {
 #  endif
 # endif
 
-#include "capicuas.tab.h"
+#include "g5.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -122,15 +106,16 @@ enum yysymbol_kind_t
   YYSYMBOL_YYEOF = 0,                      /* "end of file"  */
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
-  YYSYMBOL_CERO = 3,                       /* CERO  */
-  YYSYMBOL_UNO = 4,                        /* UNO  */
+  YYSYMBOL_A_CHAR = 3,                     /* A_CHAR  */
+  YYSYMBOL_B_CHAR = 4,                     /* B_CHAR  */
   YYSYMBOL_EOL = 5,                        /* EOL  */
   YYSYMBOL_DESCONOCIDO = 6,                /* DESCONOCIDO  */
   YYSYMBOL_YYACCEPT = 7,                   /* $accept  */
   YYSYMBOL_programa = 8,                   /* programa  */
   YYSYMBOL_linea = 9,                      /* linea  */
-  YYSYMBOL_numero = 10,                    /* numero  */
-  YYSYMBOL_digito = 11                     /* digito  */
+  YYSYMBOL_expresion = 10,                 /* expresion  */
+  YYSYMBOL_S = 11,                         /* S  */
+  YYSYMBOL_A = 12                          /* A  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -458,16 +443,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   9
+#define YYLAST   8
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  7
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  5
+#define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  10
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  13
+#define YYNSTATES  15
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   261
@@ -517,8 +502,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    28,    28,    30,    34,    42,    43,    51,    52,    56,
-      57
+       0,    12,    12,    14,    18,    19,    20,    24,    28,    32,
+      33
 };
 #endif
 
@@ -534,8 +519,9 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "CERO", "UNO", "EOL",
-  "DESCONOCIDO", "$accept", "programa", "linea", "numero", "digito", YY_NULLPTR
+  "\"end of file\"", "error", "\"invalid token\"", "A_CHAR", "B_CHAR",
+  "EOL", "DESCONOCIDO", "$accept", "programa", "linea", "expresion", "S",
+  "A", YY_NULLPTR
 };
 
 static const char *
@@ -559,8 +545,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -4,     0,    -4,    -3,    -4,    -4,    -4,    -4,     3,    -4,
-      -4,    -4,    -4
+      -4,     0,    -4,    -3,    -4,    -4,    -4,    -1,    -4,     3,
+      -4,    -4,     4,    -4,    -4
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -568,20 +554,20 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     1,     0,     9,    10,     5,     3,     0,     7,
-       6,     4,     8
+       2,     0,     1,     0,    10,     5,     3,     0,     7,     0,
+       6,     4,     0,     8,     9
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,    -4,    -4,     1
+      -4,    -4,    -4,    -4,    -4,    -4
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     1,     7,     8,     9
+       0,     1,     6,     7,     8,     9
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -589,33 +575,33 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       2,     3,    10,     4,     5,     6,     4,     5,    11,    12
+       2,     3,    10,     4,    11,     5,    12,    13,    14
 };
 
 static const yytype_int8 yycheck[] =
 {
-       0,     1,     5,     3,     4,     5,     3,     4,     5,     8
+       0,     1,     5,     3,     5,     5,     3,     4,     4
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     8,     0,     1,     3,     4,     5,     9,    10,    11,
-       5,     5,    11
+       0,     8,     0,     1,     3,     5,     9,    10,    11,    12,
+       5,     5,     3,     4,     4
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     7,     8,     8,     9,     9,     9,    10,    10,    11,
-      11
+       0,     7,     8,     8,     9,     9,     9,    10,    11,    12,
+      12
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     2,     2,     1,     2,     1,     2,     1,
+       0,     2,     0,     2,     2,     1,     2,     1,     2,     3,
        1
 };
 
@@ -1079,49 +1065,44 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 4: /* linea: numero EOL  */
-#line 34 "capicuas.y"
-                 {
-          buffer[pos] = '\0';   /* Terminar cadena */
-          if (es_capicua(buffer))
-              printf("%s -> ACEPTA\n", buffer);
-          else
-              printf("%s -> NO ACEPTA\n", buffer);
-          pos = 0;  /* Reiniciar buffer */
-      }
-#line 1093 "capicuas.tab.c"
+  case 4: /* linea: expresion EOL  */
+#line 18 "g5.y"
+                      { printf("ACEPTA\n"); }
+#line 1072 "g5.tab.c"
     break;
 
   case 5: /* linea: EOL  */
-#line 42 "capicuas.y"
-          { pos = 0; }
-#line 1099 "capicuas.tab.c"
+#line 19 "g5.y"
+                      { /* línea vacía */ }
+#line 1078 "g5.tab.c"
     break;
 
   case 6: /* linea: error EOL  */
-#line 43 "capicuas.y"
-                {
-          printf("NO ACEPTA\n");
-          pos = 0;
-          yyerrok;
-      }
-#line 1109 "capicuas.tab.c"
+#line 20 "g5.y"
+                      { printf("NO ACEPTA\n"); yyerrok; }
+#line 1084 "g5.tab.c"
     break;
 
-  case 9: /* digito: CERO  */
-#line 56 "capicuas.y"
-           { buffer[pos++] = '0'; }
-#line 1115 "capicuas.tab.c"
+  case 8: /* S: A B_CHAR  */
+#line 28 "g5.y"
+                      { /* S -> Ab */ }
+#line 1090 "g5.tab.c"
     break;
 
-  case 10: /* digito: UNO  */
-#line 57 "capicuas.y"
-           { buffer[pos++] = '1'; }
-#line 1121 "capicuas.tab.c"
+  case 9: /* A: A A_CHAR B_CHAR  */
+#line 32 "g5.y"
+                      { /* A -> Aab */ }
+#line 1096 "g5.tab.c"
+    break;
+
+  case 10: /* A: A_CHAR  */
+#line 33 "g5.y"
+                      { /* A -> a */ }
+#line 1102 "g5.tab.c"
     break;
 
 
-#line 1125 "capicuas.tab.c"
+#line 1106 "g5.tab.c"
 
       default: break;
     }
@@ -1314,21 +1295,32 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 59 "capicuas.y"
+#line 36 "g5.y"
 
 
-int yyerror(const char *s) {
-    return 0;
-}
-
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
     if (argc > 1) {
         yyin = fopen(argv[1], "r");
         if (!yyin) {
             perror("No se pudo abrir el archivo");
             return 1;
         }
+    } else {
+        yyin = stdin;
+        printf("Ingrese cadenas (Ctrl+D para terminar):\n");
+        printf("Gramática G₅: L(G₅) = {a(ab)ⁿb | n≥0}\n");
+        printf("Ejemplos válidos: ab, aabb, aababb, aabababb, etc.\n");
     }
+    
     yyparse();
+    
+    if (argc > 1 && yyin != stdin) {
+        fclose(yyin);
+    }
+    
+    return 0;
+}
+
+int yyerror(const char *s) {
     return 0;
 }

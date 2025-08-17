@@ -109,12 +109,13 @@ enum yysymbol_kind_t
   YYSYMBOL_A_CHAR = 3,                     /* A_CHAR  */
   YYSYMBOL_B_CHAR = 4,                     /* B_CHAR  */
   YYSYMBOL_EOL = 5,                        /* EOL  */
-  YYSYMBOL_YYACCEPT = 6,                   /* $accept  */
-  YYSYMBOL_programa = 7,                   /* programa  */
-  YYSYMBOL_linea = 8,                      /* linea  */
-  YYSYMBOL_expresion = 9,                  /* expresion  */
-  YYSYMBOL_S = 10,                         /* S  */
-  YYSYMBOL_A = 11                          /* A  */
+  YYSYMBOL_DESCONOCIDO = 6,                /* DESCONOCIDO  */
+  YYSYMBOL_YYACCEPT = 7,                   /* $accept  */
+  YYSYMBOL_programa = 8,                   /* programa  */
+  YYSYMBOL_linea = 9,                      /* linea  */
+  YYSYMBOL_expresion = 10,                 /* expresion  */
+  YYSYMBOL_S = 11,                         /* S  */
+  YYSYMBOL_A = 12                          /* A  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -445,7 +446,7 @@ union yyalloc
 #define YYLAST   10
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  6
+#define YYNTOKENS  7
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
@@ -454,7 +455,7 @@ union yyalloc
 #define YYNSTATES  16
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   260
+#define YYMAXUTOK   261
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -494,7 +495,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5
+       5,     6
 };
 
 #if YYDEBUG
@@ -519,7 +520,8 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "A_CHAR", "B_CHAR",
-  "EOL", "$accept", "programa", "linea", "expresion", "S", "A", YY_NULLPTR
+  "EOL", "DESCONOCIDO", "$accept", "programa", "linea", "expresion", "S",
+  "A", YY_NULLPTR
 };
 
 static const char *
@@ -587,15 +589,15 @@ static const yytype_int8 yycheck[] =
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     7,     0,     1,     3,     5,     8,     9,    10,    11,
-       5,     4,    11,     5,     4,     4
+       0,     8,     0,     1,     3,     5,     9,    10,    11,    12,
+       5,     4,    12,     5,     4,     4
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,     6,     7,     7,     8,     8,     8,     9,    10,    11,
-      11
+       0,     7,     8,     8,     9,     9,     9,    10,    11,    12,
+      12
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1068,41 +1070,41 @@ yyreduce:
   case 4: /* linea: expresion EOL  */
 #line 18 "g3.y"
                       { printf("ACEPTA\n"); }
-#line 1072 "g3.tab.c"
+#line 1074 "g3.tab.c"
     break;
 
   case 5: /* linea: EOL  */
 #line 19 "g3.y"
                       { /* línea vacía */ }
-#line 1078 "g3.tab.c"
+#line 1080 "g3.tab.c"
     break;
 
   case 6: /* linea: error EOL  */
 #line 20 "g3.y"
-                      { printf("NO ACEPTA: Cadena inválida\n"); yyerrok; }
-#line 1084 "g3.tab.c"
+                      { printf("NO ACEPTA\n"); yyerrok; }
+#line 1086 "g3.tab.c"
     break;
 
   case 8: /* S: A B_CHAR  */
 #line 28 "g3.y"
                       { /* S -> Ab */ }
-#line 1090 "g3.tab.c"
+#line 1092 "g3.tab.c"
     break;
 
   case 9: /* A: A_CHAR A B_CHAR  */
 #line 32 "g3.y"
                       { /* A -> aAb */ }
-#line 1096 "g3.tab.c"
+#line 1098 "g3.tab.c"
     break;
 
   case 10: /* A: A_CHAR B_CHAR  */
 #line 33 "g3.y"
                       { /* A -> ab */ }
-#line 1102 "g3.tab.c"
+#line 1104 "g3.tab.c"
     break;
 
 
-#line 1106 "g3.tab.c"
+#line 1108 "g3.tab.c"
 
       default: break;
     }
@@ -1306,11 +1308,6 @@ int main(int argc, char **argv) {
             return 1;
         }
         printf("Analizando archivo: %s\n", argv[1]);
-    } else {
-        yyin = stdin;
-        printf("Ingrese cadenas (Ctrl+D para terminar):\n");
-        printf("Gramática G₃: L(G₃) = {aⁿbⁿ⁺¹ | n>0}\n");
-        printf("Ejemplos válidos: abb, aabbb, aaabbbb, etc.\n");
     }
     
     yyparse();

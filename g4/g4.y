@@ -6,7 +6,7 @@ int yyerror(const char *s);
 extern FILE *yyin;
 %}
 
-%token A_CHAR B_CHAR EOL
+%token A_CHAR B_CHAR EOL DESCONOCIDO
 
 %%
 programa:
@@ -15,9 +15,9 @@ programa:
     ;
 
 linea:
-    expresion EOL     { printf("ACEPTA\n"); }
+    expresion EOL     { printf("ACEPTA\n");}
     | EOL             { /* línea vacía */ }
-    | error EOL       { printf("NO ACEPTA: Cadena inválida\n"); yyerrok; }
+    | error EOL       { printf("NO ACEPTA\n"); yyerrok; }
     ;
 
 expresion:
@@ -25,13 +25,15 @@ expresion:
     ;
 
 S:
-    A B_CHAR          { /* S -> Ab */ }
+    A B_CHAR          { printf("ACEPTA\n"); }
     ;
 
 A:
-    A_CHAR B_CHAR     { /* A -> ab */ }
-    | A_CHAR          { /* A -> a */ }
+    A_CHAR
+  | A_CHAR B_CHAR
     ;
+
+
 
 %%
 
@@ -43,11 +45,6 @@ int main(int argc, char **argv) {
             return 1;
         }
         printf("Analizando archivo: %s\n", argv[1]);
-    } else {
-        yyin = stdin;
-        printf("Ingrese cadenas (Ctrl+D para terminar):\n");
-        printf("Gramática G₄: L(G₄) = {abb | ab}\n");
-        printf("Solo acepta: abb o ab\n");
     }
     
     yyparse();

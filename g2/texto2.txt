@@ -6,7 +6,5 @@ a
 ab
 aabb
 abbb
-b
-abb
-b
 7
++
