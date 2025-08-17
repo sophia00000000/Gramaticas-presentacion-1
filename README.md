@@ -11,7 +11,7 @@ Para cada una de las gramáticas hay un archivo de prueba .txt.
 
 ---
 <img width="1599" height="807" alt="image" src="https://github.com/user-attachments/assets/b34da2e2-4ce0-4ef2-b2af-8f001706fd93" />
-<img width="807" height="223" alt="imagen" src="https://github.com/user-attachments/assets/5a594a15-22c2-421c-9ee8-1e7140b8ffaa" />
+<img width="793" height="303" alt="image" src="https://github.com/user-attachments/assets/d3de812a-6e07-451e-a60f-b06b51969d86" />
 
 --- 
 
@@ -28,4 +28,37 @@ Para cada una de las gramáticas hay un archivo de prueba .txt.
 
 <img width="1597" height="809" alt="image" src="https://github.com/user-attachments/assets/aba0fb68-0647-4e46-86f6-cb82c219490f" />
 <img width="734" height="267" alt="image" src="https://github.com/user-attachments/assets/8d4f803e-4df7-4d29-9458-6787fd722af9" />
+
+---
+### Ejecutar
+Flex
+
+
+        flex g2.l
+
+
+
+        
+compilar - se produce del anterior - banderas
+
+
+        cc lex.yy.c -lfl
+
+
+ejecutable
+
+
+
+        ./a.out < archivo.txt
+
+Flex y Bison 
+
+
+        bison -d g2.y      # genera calc.tab.c y calc.tab.h
+        flex g2.l          # genera lex.yy.c
+        cc g2.tab.c lex.yy.c -lfl -o g2
+        ./g2 artivo.txt
+
+### Referencias 
+- https://github.com/westes/flex 
 
