@@ -54,7 +54,7 @@ ejecutable
 Flex y Bison 
 
 
-        bison -d g2.y      # genera calc.tab.c y calc.tab.h
+        bison -d g2.y      # genera g2.tab.c y g2.tab.h
         flex g2.l          # genera lex.yy.c
         cc g2.tab.c lex.yy.c -lfl -o g2
         ./g2 artivo.txt
